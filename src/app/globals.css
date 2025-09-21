@@ -66,11 +66,22 @@ body {
   padding: 1rem;
 }
 
+/* Common Card Components */
+.card-yellow {
+  background-color: #f8dc3c;
+  border: 3px solid #000;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Common Button Components */
+/* TODO: buat button global ketiga */
 .btn-primary {
   background-color: #f6732b;
   color: #000;
   border: 2px solid #000;
-  border-radius: 0.25rem;
+  border-radius: 0.75rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -82,6 +93,7 @@ body {
 
 .btn-secondary {
   border: 2px solid #000000;
+  border-radius: 0.75rem;
   background-color: #f8dc3c;
   color: #000000;
 }
@@ -177,6 +189,7 @@ body {
 .link-secondary:hover {
   color: #374151;
 }
+
 
 /* Common Text Components */
 .text-muted {

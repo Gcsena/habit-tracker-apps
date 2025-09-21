@@ -140,13 +140,11 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Links */}
-      <div className="quick-links">
+      <div className="quick-actions">
         <Link 
-          href="/stats"
-          className="quick-link"
-        >
-          <div className="quick-link-icon">📊</div>
-          <div className="quick-link-text">Start Your Day</div>
+          href="/startDay"
+          className="btn-primary quick-action-btn"
+        > 📊 Start Your Day
         </Link>
       </div>
     </main>

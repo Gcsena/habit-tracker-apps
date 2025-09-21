@@ -9,6 +9,7 @@ export default function Navigation() {
 
   const navItems = [
     { href: "/dashboard", label: "Dashboard", icon: "🏠" },
+    { href: "/startDay", label: "Start Day", icon: "⏰" },
     { href: "/habits", label: "Habits", icon: "🎯" },
     { href: "/schedule", label: "Schedule", icon: "📅" },
     { href: "/stats", label: "Stats", icon: "📊" }

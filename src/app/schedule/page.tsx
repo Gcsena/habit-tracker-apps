@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import CountdownTimer from "@/components/CountdownTimer";
 
 import "./page.css";
 
@@ -192,9 +191,6 @@ export default function SchedulePage() {
           <div className="quick-link-text">Statistics</div>
         </Link>
       </div>
-      <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <CountdownTimer />
-    </div>
     </main>
   );
 }
