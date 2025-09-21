@@ -1,0 +1,162 @@
+/* Stats Page Specific Styles */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: #ffefd7;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.stat-number.green {
+  color: #059669;
+}
+
+.stat-number.purple {
+  color: #7c3aed;
+}
+
+.stat-number.orange {
+  color: #ea580c;
+}
+
+.stat-number.blue {
+  color: #2563eb;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #000000;
+}
+
+.weekly-progress {
+  margin-bottom: 0.75rem;
+}
+
+.weekly-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.weekly-day {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+}
+
+.weekly-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weekly-bar {
+  width: 5rem;
+  background-color: white;
+  border-radius: 9999px;
+  height: 0.5rem;
+}
+
+.weekly-bar-fill {
+  background-color: #f6732b;
+  height: 0.5rem;
+  border-radius: 9999px;
+}
+
+.weekly-count {
+  font-size: 0.75rem;
+  color: #000000;
+  width: 2rem;
+}
+
+.top-habits {
+  margin-bottom: 1.5rem;
+}
+
+.top-habit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.top-habit-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-habit-medal {
+  font-size: 1.125rem;
+}
+
+.top-habit-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+}
+
+.top-habit-streak {
+  font-size: 0.875rem;
+  color: #000000;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.quick-action {
+  padding: 1rem;
+  background: white;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+}
+
+.quick-action:hover {
+  background-color: #f9fafb;
+}
+
+.quick-action-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.quick-action-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.back-link {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.back-link a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  color: #2563eb;
+}
+

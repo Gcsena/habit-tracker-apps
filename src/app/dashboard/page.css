@@ -1,0 +1,162 @@
+/* Dashboard Page Specific Styles */
+
+.stats-overview {
+  text-align: center;
+}
+
+.stats-number {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.stats-label {
+  font-size: 0.875rem;
+  color: #000000;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  height: 0.5rem;
+}
+
+.progress-fill {
+  background-color: #2563eb;
+  height: 0.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: #000000;
+  margin-top: 0.25rem;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quick-action-btn {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.view-all-link {
+  color: #3b82f6;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.view-all-link:hover {
+  color: #2563eb;
+}
+
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: white;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #000000;
+}
+
+.habit-checkbox {
+  width: 1rem;
+  height: 1rem;
+  color: #2563eb;
+  border-radius: 0.25rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.empty-state-text {
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.create-first-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.create-first-btn:hover {
+  background-color: #2563eb;
+}
+
+.more-habits-link {
+  display: block;
+  text-align: center;
+  color: #3b82f6;
+  font-size: 0.875rem;
+  padding: 0.5rem 0;
+  text-decoration: none;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.quick-link {
+  padding: 1rem;
+  background: white;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+}
+
+.quick-link:hover {
+  background-color: #f9fafb;
+}
+
+.quick-link-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.quick-link-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+

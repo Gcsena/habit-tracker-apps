@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffefd7;
+    --foreground: #333030;
   }
 }
 
@@ -24,3 +24,201 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+*::selection {
+  background-color: #f8dc3c;
+  color: black; 
+}
+
+/* Common Layout Components */
+.page-container {
+  padding: 1rem;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  color: #000000;
+}
+
+/* Common Card Components */
+.card {
+  background: #ffefd7;
+  border: 3px solid #000;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.card-gradient {
+  background: linear-gradient(to right, #eff6ff, #e0e7ff);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.btn-primary {
+  background-color: #f6732b;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #e05a11;
+  color: #000;
+}
+
+.btn-secondary {
+  border: 2px solid #000000;
+  background-color: #f8dc3c;
+  color: #000000;
+}
+
+.btn-secondary:hover {
+  background-color: #b9a52f;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #000;
+  color: #374151;
+}
+
+.btn-outline:hover {
+  background-color: #f9fafb;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Common Form Components */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #000000;
+  border-radius: 0.5rem;
+  background-color: #ebebeb;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  resize: vertical;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Common Link Components */
+.link-primary {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.link-primary:hover {
+  color: #2563eb;
+}
+
+.link-secondary {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.link-secondary:hover {
+  color: #374151;
+}
+
+/* Common Text Components */
+.text-muted {
+  color: #6b7280;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-small {
+  font-size: 0.875rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+/* Common Spacing */
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-6 { margin-top: 1.5rem; }
+
+/* Common Flexbox */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+
+/* Common Grid */
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid { display: grid; }
+
+/* Common States */
+.line-through { text-decoration: line-through; }
+.hover-bg-gray:hover { background-color: #f9fafb; }
+

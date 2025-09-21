@@ -1,0 +1,28 @@
+/* New Habit Page Specific Styles */
+
+.back-link {
+  color: #3b82f6;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #2563eb;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.form-buttons .btn {
+  flex: 1;
+}
+

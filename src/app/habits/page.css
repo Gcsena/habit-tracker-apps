@@ -1,0 +1,135 @@
+/* Habits Page Specific Styles */
+
+.habits-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.habits-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.habits-subtitle {
+  color: #000000;
+}
+
+.new-habit-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.new-habit-btn:hover {
+  background-color: #2563eb;
+}
+
+.empty-habits {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.empty-icon {
+  font-size: 3.75rem;
+  margin-bottom: 1rem;
+}
+
+.empty-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.empty-text {
+  color: #000000;
+  margin-bottom: 1.5rem;
+}
+
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: white;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #000000;
+}
+
+.habit-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.habit-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #2563eb;
+  border-radius: 0.25rem;
+}
+
+.habit-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.habit-name {
+  font-weight: 500;
+}
+
+.habit-name.completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.habit-date {
+  font-size: 0.75rem;
+  color: #000000;
+}
+
+.habit-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.habit-action {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.habit-action:hover {
+  color: #000000;
+}
+
+.habit-action.delete:hover {
+  color: #dc2626;
+}
+
+.back-link {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.back-link a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  color: #2563eb;
+}
+
