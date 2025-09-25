@@ -7,6 +7,11 @@ import "./Navigation.css";
 export default function Navigation() {
   const pathname = usePathname();
 
+  // Don't render navigation on login page
+  if (pathname === "/login") {
+    return null;
+  }
+
   const navItems = [
     { href: "/dashboard", label: "Dashboard", icon: "🏠" },
     { href: "/startDay", label: "Start Day", icon: "⏰" },
