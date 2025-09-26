@@ -1,0 +1,153 @@
+/* Notification Container */
+.notification-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Base Notification Styles */
+.notification {
+  background: #ffefd7;
+  border: 3px solid #000;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: auto;
+  position: relative;
+  min-height: 60px;
+}
+
+/* Notification Types */
+.notification-success {
+  border-color: #22c55e;
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+}
+
+.notification-error {
+  border-color: #f6732b;
+  background: linear-gradient(135deg, #fff0e6 0%, #ffe0cc 100%);
+}
+
+.notification-warning {
+  border-color: #f8dc3c;
+  background: linear-gradient(135deg, #fffbf0 0%, #fff5d9 100%);
+}
+
+.notification-info {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
+}
+
+/* Animation States */
+.notification-enter {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification-leave {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Notification Content */
+.notification-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.notification-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.notification-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #000;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+.notification-message {
+  font-size: 0.8125rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+/* Action Button */
+.notification-action {
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.notification-action-btn {
+  background: #f6732b;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.notification-action-btn:hover {
+  background: #e05a11;
+}
+
+/* Hover Effects */
+.notification:hover {
+  transform: translateX(0) translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notification-leave:hover {
+  transform: translateX(100%) translateY(-1px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .notification-container {
+    top: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    max-width: none;
+  }
+  
+  .notification {
+    padding: 0.875rem;
+  }
+  
+  .notification-content {
+    gap: 0.5rem;
+  }
+  
+  .notification-title {
+    font-size: 0.8125rem;
+  }
+  
+  .notification-message {
+    font-size: 0.75rem;
+  }
+}
+

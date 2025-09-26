@@ -15,33 +15,71 @@ export default function ScheduleTimer() {
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [sessionStartTime, setSessionStartTime] = useState<Date | null>(null);
+  const [audioEnabled, setAudioEnabled] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const focusAudioRef = useRef<HTMLAudioElement | null>(null);
+  const breakAudioRef = useRef<HTMLAudioElement | null>(null);
 
   // Define your routine sessions with durations in minutes
   const routineSessions: RoutineSession[] = [
     { id: "focus1", title: "Focus Session 1", time: "05.00 - 07.00", duration: 0.1 }, // 2 hours
-    { id: "break1", title: "Break 1", time: "07.00 - 07.30", duration: 1 }, // 30 minutes
-    { id: "focus2", title: "Focus Session 2", time: "07.30 - 09.30", duration: 1 }, // 2 hours
-    { id: "break2", title: "Break 2", time: "09.30 - 10.00", duration: 1 }, // 30 minutes
-    { id: "focus3", title: "Focus Session 3", time: "10.00 - 12.00", duration: 1 }, // 2 hours
-    { id: "lunch", title: "Lunch (Long Break)", time: "12.00 - 13.00", duration: 1 }, // 1 hour
-    { id: "focus4", title: "Focus Session 4", time: "13.00 - 15.00", duration: 1 }, // 2 hours
-    { id: "freetime", title: "Free Time", time: "15.00 - 18.00", duration: 1 }, // 3 hours
-    { id: "prepare", title: "Prepare for Bed", time: "18.00 - 19.00", duration: 1 }, // 1 hour
-    { id: "journal", title: "Cooling Down + Journaling", time: "19.00 - 20.00", duration: 1 }, // 1 hour
+    { id: "break1", title: "Break 1", time: "07.00 - 07.30", duration: 0.1 }, // 30 minutes
+    { id: "focus2", title: "Focus Session 2", time: "07.30 - 09.30", duration: 0.1 }, // 2 hours
+    { id: "break2", title: "Break 2", time: "09.30 - 10.00", duration: 0.1 }, // 30 minutes
+    { id: "focus3", title: "Focus Session 3", time: "10.00 - 12.00", duration: 0.1 }, // 2 hours
+    { id: "lunch", title: "Lunch (Long Break)", time: "12.00 - 13.00", duration: 0.1 }, // 1 hour
+    { id: "focus4", title: "Focus Session 4", time: "13.00 - 15.00", duration: 0.1 }, // 2 hours
+    { id: "freetime", title: "Free Time", time: "15.00 - 18.00", duration: 0.1 }, // 3 hours
+    { id: "prepare", title: "Prepare for Bed", time: "18.00 - 19.00", duration: 0.1 }, // 1 hour
+    { id: "journal", title: "Cooling Down + Journaling", time: "19.00 - 20.00", duration: 0.1 }, // 1 hour
   ];
 
-  // Load saved state from localStorage on first render
+  // Initialize audio and load saved state
   useEffect(() => {
+    // Initialize audio elements
+    focusAudioRef.current = new Audio('/audio/ffx_victory.mp3');
+    breakAudioRef.current = new Audio('/audio/niera_sound_3.mp3');
+    
+    // Set audio properties
+    [focusAudioRef.current].forEach(audio => {
+      if (audio) {
+        audio.preload = 'auto';
+        audio.volume = 0.2; // Set volume to 10%
+      }
+    });
+
+    [breakAudioRef.current].forEach(audio => {
+        if (audio) {
+          audio.preload = 'auto';
+          audio.volume = 0.5;
+      
+          let playCount = 0;
+          const maxPlays = 3;
+        
+        //   loop nier ringtone
+          audio.addEventListener("ended", () => {
+            playCount++;
+            if (playCount < maxPlays) {
+              audio.currentTime = 0; // reset to start
+              audio.play();
+            }
+          });
+        }
+      });
+      
+
+    // Load saved state from localStorage
     const savedSessionIndex = localStorage.getItem("currentSessionIndex");
     const savedTimeLeft = localStorage.getItem("timeLeft");
     const savedIsRunning = localStorage.getItem("isRunning");
     const savedIsPaused = localStorage.getItem("isPaused");
+    const savedAudioEnabled = localStorage.getItem("audioEnabled");
 
     if (savedSessionIndex) setCurrentSessionIndex(Number(savedSessionIndex));
     if (savedTimeLeft) setTimeLeft(Number(savedTimeLeft));
     if (savedIsRunning) setIsRunning(savedIsRunning === "true");
     if (savedIsPaused) setIsPaused(savedIsPaused === "true");
+    if (savedAudioEnabled) setAudioEnabled(savedAudioEnabled === "true");
   }, []);
 
   // Save state to localStorage whenever it changes
@@ -50,7 +88,8 @@ export default function ScheduleTimer() {
     localStorage.setItem("timeLeft", String(timeLeft));
     localStorage.setItem("isRunning", String(isRunning));
     localStorage.setItem("isPaused", String(isPaused));
-  }, [currentSessionIndex, timeLeft, isRunning, isPaused]);
+    localStorage.setItem("audioEnabled", String(audioEnabled));
+  }, [currentSessionIndex, timeLeft, isRunning, isPaused, audioEnabled]);
 
   // Timer logic
   useEffect(() => {
@@ -60,6 +99,8 @@ export default function ScheduleTimer() {
           if (prev <= 1) {
             // Session completed, pause and wait for user to start next session
             setIsRunning(false);
+            // Play appropriate audio notification
+            playSessionCompleteSound();
             if (currentSessionIndex < routineSessions.length - 1) {
               // Move to next session but keep timer paused
               setCurrentSessionIndex(prev => prev + 1);
@@ -86,6 +127,27 @@ export default function ScheduleTimer() {
     setTimeLeft(routineSessions[currentSessionIndex].duration * 60);
     setSessionStartTime(new Date());
   }, [currentSessionIndex]);
+
+  // Function to determine if current session is a focus or break session
+  const isFocusSession = (sessionId: string) => {
+    return sessionId.includes('focus');
+  };
+
+  // Function to play appropriate sound when session completes
+  const playSessionCompleteSound = () => {
+    if (!audioEnabled) return;
+
+    const currentSession = routineSessions[currentSessionIndex];
+    const audioRef = isFocusSession(currentSession.id) ? focusAudioRef : breakAudioRef;
+    
+    // error handler if audio not work
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0; // Reset to beginning
+      audioRef.current.play().catch((error) => {
+        console.log("Audio playback failed:", error);
+      });
+    }
+  };
 
   // Format seconds to HH:MM:SS
   const formatTime = (seconds: number) => {
