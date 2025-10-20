@@ -19,6 +19,7 @@ export default function ScheduleTimer() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const focusAudioRef = useRef<HTMLAudioElement | null>(null);
   const breakAudioRef = useRef<HTMLAudioElement | null>(null);
+  const completionHandledRef = useRef<boolean>(false);
 
   // Define your routine sessions with durations in minutes
   const routineSessions: RoutineSession[] = [
@@ -97,14 +98,27 @@ export default function ScheduleTimer() {
       intervalRef.current = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev <= 1) {
+            // Guard: ensure completion logic runs only once per session end
+            if (completionHandledRef.current) {
+              return 0;
+            }
+            completionHandledRef.current = true;
+
             // Session completed, pause and wait for user to start next session
             setIsRunning(false);
-            // Play appropriate audio notification
+            // Play appropriate audio notification (uses currentSessionIndex from closure)
             playSessionCompleteSound();
+
             if (currentSessionIndex < routineSessions.length - 1) {
-              // Move to next session but keep timer paused
-              setCurrentSessionIndex(prev => prev + 1);
-              return routineSessions[currentSessionIndex + 1].duration * 60;
+              // Advance to next session using functional updater to avoid stale state
+              setCurrentSessionIndex((idx) => {
+                const nextIdx = idx + 1;
+                // update timeLeft for the next session so UI reflects it immediately
+                setTimeLeft(routineSessions[nextIdx].duration * 60);
+                return nextIdx;
+              });
+              // keep return 0 here; timeLeft was set for next session above
+              return 0;
             } else {
               // All sessions completed
               return 0;
@@ -158,6 +172,7 @@ export default function ScheduleTimer() {
   };
 
   const handleStart = () => {
+    completionHandledRef.current = false;
     setIsRunning(true);
     setIsPaused(false);
     setSessionStartTime(new Date());
@@ -168,6 +183,7 @@ export default function ScheduleTimer() {
   };
 
   const handleReset = () => {
+    completionHandledRef.current = false;
     setIsRunning(false);
     setIsPaused(false);
     setCurrentSessionIndex(0);
@@ -177,6 +193,7 @@ export default function ScheduleTimer() {
 
   const handleSkip = () => {
     if (currentSessionIndex < routineSessions.length - 1) {
+      completionHandledRef.current = false;
       setCurrentSessionIndex(prev => prev + 1);
       setIsRunning(false);
     }
